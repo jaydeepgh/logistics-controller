@@ -1,0 +1,20 @@
+#######################################################
+# Kubernetes + Istio deployment for Controller
+#######################################################
+
+kind: RouteRule
+metadata:
+  name: lw-controller-route
+spec:
+  destination:
+    name: lw-controller
+  # match:
+  #   httpHeaders:
+  #     uri:
+  #       prefix: /controller
+  rewrite:
+    uri: /
+  route:
+  - labels:
+      version: v1
+    weight: 100
